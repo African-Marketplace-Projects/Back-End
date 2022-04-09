@@ -1,14 +1,18 @@
 const router = require('express').Router()
 const User = require('./users-model')
+const { restricted } = require("../auth/auth-middlware")
 
 
-router.get('/:id', (req, res, next) => {
+
+router.get('/', (req, res, next) => {
     User.getUser(req.params.id)
     .then(resource => {
         res.status(200).json(resource)
     })
     .catch(next)
 })
+
+
 
 
 router.use((err, req, res, next) => {
