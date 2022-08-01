@@ -2,10 +2,10 @@ const router = require('express').Router()
 const User = require('./users-model')
 const { restricted } = require("../auth/auth-middlware")
 
-
+//need to be able to edit a user profile
 
 router.get('/', (req, res, next) => {
-    User.getUser(req.params.id)
+    User.get()
     .then(resource => {
         res.status(200).json(resource)
     })

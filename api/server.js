@@ -5,6 +5,9 @@ const itemsRouter = require("./items/items-router")
 
 const server = express()
 
+
+
+
 server.use(express.json())
 
 server.use('/api/auth', authRouter)
