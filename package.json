@@ -30,6 +30,7 @@
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.95.15",
+    "nanoid": "^4.0.0",
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {

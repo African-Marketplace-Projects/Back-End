@@ -16,6 +16,28 @@ router.get('/', (req, res, next) => {
     .catch(next)
 });
 
+router.post('/', (req, res, next) => {
+    const {item_name, item_price, item_description, item_location } = req.body;
+    if(!item_name || !item_price || !item_description || !item_location){
+        res.status(400).json({
+            message: "All text fields are required"
+        })
+    } else {
+        Item.addItem({item_name, item_price, item_description, item_location})
+        .then(({item_id}) => {
+            return Item.findById(item_id)
+        })
+        .then(item => {
+            res.status(201).json(item)
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: "there was an error while saving the user to the database"
+            })
+        })
+    }
+})
+
 
 
 
